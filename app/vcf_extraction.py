@@ -26,6 +26,7 @@ def get_vcf_names(vcf_path):
             for line in ifile:
                 if line.startswith("#CHROM"):
                     vcf_names = [x for x in line.split('\t')]
+                    vcf_names = [sub.replace('INFO\n', 'INFO') for sub in vcf_names]
                     return vcf_names
         ifile.close()
 
